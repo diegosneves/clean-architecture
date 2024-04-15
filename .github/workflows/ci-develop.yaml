@@ -13,7 +13,6 @@ jobs:
     runs-on: ${{ matrix.ubuntu }}
     env:
       DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     steps:
       - name: Checkout codigo
