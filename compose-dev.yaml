@@ -1,15 +1,14 @@
 services:
   database-dev:
-    image: "postgres:latest"
-    container_name: clean_postgres_db_dev
+    image: "mysql:latest"
+    container_name: clean_mysql_db_dev
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     ports:
-      - "5432:5432"
+      - "3307:3306"
     volumes:
-      - db-postgres-clean-dev:/var/lib/postgresql/data
+      - db-mysql-clean-dev:/var/lib/postgresql/data
 
 volumes:
-  db-postgres-clean-dev:
+  db-mysql-clean-dev:
