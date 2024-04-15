@@ -1,5 +1,5 @@
 services:
-  database:
+  database-dev:
     image: "postgres:latest"
     container_name: clean_postgres_db_dev
     environment:
