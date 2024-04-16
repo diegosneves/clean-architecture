@@ -12,10 +12,24 @@ jobs:
         ubuntu: ['ubuntu-latest']
         java: ['17']
     runs-on: ${{ matrix.ubuntu }}
+
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
+
     env:
       DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+
     steps:
       - name: Checkout codigo
         uses: actions/checkout@v3
@@ -67,6 +81,5 @@ jobs:
           tags: diegoneves/clean-architecture:${{ env.BRANCH_NAME }}
           build-args: |
             DB_NAME=${{ env.DB_NAME }}
-            DB_USERNAME=${{ env.DB_USERNAME }}
             DB_PASSWORD=${{ env.DB_PASSWORD }}
-            
+            DB_USERNAME=${{ env.DB_USERNAME }}
