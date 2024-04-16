@@ -11,7 +11,7 @@ services:
       - db-mysql-clean:/var/lib/postgresql/data
 
   clean-app:
-    image: diegoneves/clean-architecture:latest
+    image: diegoneves/clean-architecture:0.1.0
     container_name: clean_architecture_demo
     ports:
       - "8080:8080"
@@ -20,7 +20,7 @@ services:
     environment:
       - DB_HOST=clean_mysql_db
       - DB_PORT=3306
-    entrypoint: sh -c "dockerize -wait tcp://clean_postgres_db:3306 -timeout 60s && java -jar target/clean-architecture.jar"
+    entrypoint: sh -c "dockerize -wait tcp://clean_mysql_db:3306 -timeout 60s && java -jar target/clean-architecture.jar"
 
 volumes:
   db-mysql-clean:
