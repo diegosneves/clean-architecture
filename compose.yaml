@@ -1,15 +1,14 @@
 services:
   database:
-    image: "postgres:latest"
-    container_name: clean_postgres_db
+    image: "mysql:latest"
+    container_name: clean_mysql_db
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     ports:
-      - "5432:5432"
+      - "3307:3306"
     volumes:
-      - db-postgres-clean:/var/lib/postgresql/data
+      - db-mysql-clean:/var/lib/postgresql/data
 
   clean-app:
     image: diegoneves/clean-architecture:latest
@@ -19,9 +18,9 @@ services:
     depends_on:
       - database
     environment:
-      - DB_HOST=clean_postgres_db
-      - DB_PORT=5432
-    entrypoint: sh -c "dockerize -wait tcp://clean_postgres_db:5432 -timeout 60s && java -jar target/clean-architecture.jar"
+      - DB_HOST=clean_mysql_db
+      - DB_PORT=3306
+    entrypoint: sh -c "dockerize -wait tcp://clean_postgres_db:3306 -timeout 60s && java -jar target/clean-architecture.jar"
 
 volumes:
-  db-postgres-clean:
+  db-mysql-clean:
