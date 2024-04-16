@@ -11,7 +11,7 @@ services:
       - db-mysql-clean:/var/lib/postgresql/data
 
   clean-app:
-    image: diegoneves/clean-architecture:0.1.0
+    image: diegoneves/clean-architecture:latest
     container_name: clean_architecture_demo
     ports:
       - "8080:8080"

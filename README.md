@@ -1,5 +1,5 @@
 # Clean Architecture
-[![CI Prod](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-prod.yaml/badge.svg)](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-prod.yaml) [![CI Develop](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-develop.yaml/badge.svg)](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-develop.yaml)
+[![CI Prod](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-prod.yaml/badge.svg)](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-prod.yaml) [![CI HLG](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-hlg.yaml/badge.svg)](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-hlg.yaml) [![CI Develop](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-develop.yaml/badge.svg)](https://github.com/diegosneves/clean-architecture/actions/workflows/ci-develop.yaml)
 
 A Clean Architecture é um princípio de design de software avançado que defende a separação de responsabilidades no sistema de software. A ideia principal por trás da Clean Architecture é a independência do código-fonte em relação aos detalhes. Essas dependências são extraídas para as camadas externas do sistema por meio de abstrações e inversão de controle.
 
