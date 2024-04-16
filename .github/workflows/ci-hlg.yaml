@@ -43,7 +43,7 @@ jobs:
 
       - name: Get branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/*/} | cut -d'/' -f2)" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_BASE_REF#release/} | cut -d'/' -f2)" >> $GITHUB_ENV
 
       - name: Setup Java
         uses: actions/setup-java@v3
