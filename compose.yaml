@@ -15,12 +15,13 @@ services:
     container_name: clean_architecture_demo
     ports:
       - "8080:8080"
+      - "8081:5005"
     depends_on:
       - database
     environment:
-      - DB_HOST=clean_mysql_db
+      - DB_HOST=database
       - DB_PORT=3306
-    entrypoint: sh -c "dockerize -wait tcp://clean_mysql_db:3306 -timeout 60s && java -jar target/clean-architecture.jar"
+    entrypoint: sh -c "dockerize -wait tcp://$${DB_HOST}:$${DB_PORT} -timeout 12s && java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar target/clean-architecture.jar"
 
 volumes:
   db-mysql-clean:
