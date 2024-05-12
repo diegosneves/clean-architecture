@@ -13,6 +13,8 @@ public enum ExceptionDetails {
 
     CONSTRUCTOR_DEFAULT_UNDEFINED("Classe [ %s ] deve declarar um construtor padrão.", HttpStatus.NOT_IMPLEMENTED),
     CLASS_MAPPING_FAILURE("Falha ao tentar mapear a classe [ %s ].", HttpStatus.NOT_IMPLEMENTED),
+    ADDRESS_CREATION_FAILURE("A criação de um novo Endereço falhou devido ao seguinte motivo: %s", HttpStatus.BAD_REQUEST),
+    CUSTOMER_CREATION_FAILURE("A criação de um novo Cliente falhou devido ao seguinte motivo: %s", HttpStatus.BAD_REQUEST),
     INVALID_UUID_FORMAT_MESSAGE("O ID %s precisa estar no formato UUID", HttpStatus.BAD_REQUEST);
 
     private final String message;

@@ -1,5 +1,7 @@
 package diegosneves.github.cleanarchitecture.infrastructure.api.config.handler;
 
+import diegosneves.github.cleanarchitecture.exception.AddressException;
+import diegosneves.github.cleanarchitecture.exception.CustomerException;
 import diegosneves.github.cleanarchitecture.exception.UuidInvalidException;
 import diegosneves.github.cleanarchitecture.infrastructure.api.dto.ExceptionDTO;
 import org.springframework.http.HttpStatus;
@@ -78,6 +80,19 @@ public class ControllerExceptionHandler {
     public ResponseEntity<ExceptionDTO> uuidUtilsRelatedFaileures(UuidInvalidException exception) {
         ExceptionDTO dto = new ExceptionDTO(exception.getMessage(), UuidInvalidException.ERROR.getStatusCodeValue());
         return ResponseEntity.status(UuidInvalidException.ERROR.getHttpStatusCode()).body(dto);
+    }
+
+
+    @ExceptionHandler(AddressException.class)
+    public ResponseEntity<ExceptionDTO> addressRelatedFaileures(AddressException exception) {
+        ExceptionDTO dto = new ExceptionDTO(exception.getMessage(), AddressException.ERROR.getStatusCodeValue());
+        return ResponseEntity.status(AddressException.ERROR.getHttpStatusCode()).body(dto);
+    }
+
+    @ExceptionHandler(CustomerException.class)
+    public ResponseEntity<ExceptionDTO> customerRelatedFaileures(CustomerException exception) {
+        ExceptionDTO dto = new ExceptionDTO(exception.getMessage(), CustomerException.ERROR.getStatusCodeValue());
+        return ResponseEntity.status(CustomerException.ERROR.getHttpStatusCode()).body(dto);
     }
 
 }
